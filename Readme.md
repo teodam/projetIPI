@@ -2,7 +2,10 @@
 
 ##Installation
 
-Dépendences à installer avant de lancer l'application
+**Ce programme a été dévelloppé et testé avec ubuntu 14.04 x64  
+Une utilisation sous Windows nécéssite une adaptation des appels des bibiothèques SDL et dirent**
+
+Dépendences à installer avant de lancer l'application :
 
 	sudo apt-get install libsdl1.2debian libsdl1.2-dev libsdl-image1.2 libsdl-image1.2-dev libsdl-ttf2.0-0 libsdl-ttf2.0-dev libsdl-mixer1.2 libsdl-mixer1.2-dev imagemagick
 
