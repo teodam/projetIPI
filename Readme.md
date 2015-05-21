@@ -17,7 +17,9 @@ Avant de lancer l'application veuillez ajouter toutes les images que vous voulez
 1. Si vous avez mis plusieurs images dans le dossier:  
    Vous arriverez sur une mosaïque  
    Cliquez sur une image pour l'afficher en grand  
-   Vous pouver faire tourner la sphere avec les touches fléchées droite et gauche.  
-   Pour revenir à la mosaïque, utilisez la flèche du bas
+   Vous pouver faire tourner la sphere avec les **touches fléchées droite et gauche**.  
+   Pour revenir à la mosaïque, utilisez la **flèche du bas**
 
-2. Si vous avez mis une seule image, vous arriverez directement sur un affichage de votre image en grand.
+2. Si vous avez mis une seule image:  
+   Vous arriverez directement sur un affichage de votre image en grand.  
+   **Attention** vous n'aurez pas accès à un affichage de type mosaïque.
