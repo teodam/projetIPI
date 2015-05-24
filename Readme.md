@@ -13,7 +13,9 @@ Dépendences à installer avant de lancer l'application :
 
 ##Ajout des photos
 
-Avant de lancer l'application veuillez ajouter toutes les images que vous voulez visualiser à la racine du dossier Image
+Avant de lancer l'application veuillez ajouter toutes les images que vous voulez visualiser à la racine du dossier Image  
+  
+Formats supportés : jpg, JPG, jpeg, JPEG
 
 ##Navigation
 

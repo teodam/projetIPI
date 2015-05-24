@@ -24,8 +24,6 @@ int main()
 	ecran = SDL_SetVideoMode(L, H, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
 	check(ecran);	/*Ouverture de la fenêtre*/
 
-	SDL_EnableKeyRepeat(10, 10);
-
 	system("Images/./init.sh");
 	menu(ecran);
 	SDL_Quit();	/*On quitte la SDL proprement*/

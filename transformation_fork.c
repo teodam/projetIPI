@@ -185,12 +185,12 @@ void magic_gen(char* name, double pas){
 }
 
 unsigned char* magic(char* name, double angle){
-	clock_t t;
+	//clock_t t;
 	int H, L;
 	unsigned char* img = NULL;
 	unsigned char* rot = NULL;
 	unsigned char* final = NULL;
-	t=clock();
+	//t=clock();
 
 	//	Lecture de la photo et enregistrement en chaine de caractères (on récupère au passage H et L)
 	//printf("Lecture de l'image de base ... ");
@@ -205,8 +205,8 @@ unsigned char* magic(char* name, double angle){
 	rotation(img, rot, L, H, angle);
 	sphere(rot, final, H, H);
 
-	t=clock()-t;
-	printf("temps : %f\n", ((double)t)/CLOCKS_PER_SEC);
+	//t=clock()-t;
+	//printf("temps : %f\n", ((double)t)/CLOCKS_PER_SEC);
 	//	Liberation de la mémoire
 	//printf("Libération de la mémoire ... ");
 	free(rot);

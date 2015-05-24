@@ -102,14 +102,15 @@ void get_names(liste *l, char *rep)
 	struct dirent *entry;
 
 	dir = opendir(rep);	/*On ouvre le dossier*/
-	readdir(dir);
-	readdir(dir);
 	while((entry = readdir(dir)) != NULL)	/*On le parcourt en rajoutant un élément à la liste pour chaque image*/
 	{
-		i++;
-		strcpy(buff, rep);
-		strcat(buff, entry->d_name);
-		ajouter_fin(l, i, buff);
+		if(entry->d_name[strlen(entry->d_name)-1] != '.')
+		{
+			i++;
+			strcpy(buff, rep);
+			strcat(buff, entry->d_name);
+			ajouter_fin(l, i, buff);
+		}
 	}
 
 	closedir(dir);	/*On referme le dossier*/
