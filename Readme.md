@@ -21,6 +21,7 @@ Formats supportés : jpg, JPG, jpeg, JPEG
 
 1. Si vous avez mis plusieurs images dans le dossier:  
    Vous arriverez sur une mosaïque  
+   Vous pouvez changer de page avec les **touches fléchées droite et gauche**.  
    Cliquez sur une image pour l'afficher en grand  
    Vous pouver faire tourner la sphere avec les **touches fléchées droite et gauche**.  
    Pour revenir à la mosaïque, utilisez la **flèche du bas**

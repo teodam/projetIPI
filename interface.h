@@ -19,7 +19,7 @@ void check(SDL_Surface *s);
 SDL_Surface *charger(liste *l, double ang, int N);
 void mosaique(SDL_Surface *ecran, liste *l, liste *l2);
 int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages, int imgmax);
-void choisir(SDL_Surface *ecran, SDL_Rect coo, liste *l);
+void choisir(SDL_Surface *ecran, SDL_Rect coo, liste *l, int page, int imgmax);
 void tourner(SDL_Surface *ecran, liste *l);
 
 #endif

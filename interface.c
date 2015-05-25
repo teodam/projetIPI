@@ -93,8 +93,8 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
 	double ang=0;
 	liste *point=l;
 	SDL_Event event;
-	SDL_Surface **tab=calloc(imgmax, sizeof(**tab));
-	SDL_Rect *coo=calloc(imgmax, sizeof(*coo)), souris;
+	SDL_Surface **tab=calloc(imgmax, sizeof(**tab)), *f_g, *f_d;
+	SDL_Rect *coo=calloc(imgmax, sizeof(*coo)), souris, coo_g, coo_d;
 
 	coo[0].x = ESPACE; coo[0].y = ESPACE;
 	for(i=1; i<imgmax; i++)
@@ -104,6 +104,13 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
 		else
 		{	coo[i].x = coo[i-1].x + MI + ESPACE; coo[i].y = coo[i-1].y;	}
 	}	/*On calcule les coordonées des miniatures*/
+	coo_g.x = 10; coo_g.y = H/2 - 64/2;
+	coo_d.x = L-10-64; coo_d.y = H/2 - 64/2;
+
+	f_g = IMG_Load("Images/.gauche");
+	check(f_g);
+	f_d = IMG_Load("Images/.droite");
+	check(f_d);
 
 	while(continuer)
 	{
@@ -129,6 +136,9 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
 				SDL_BlitSurface(tab[i], NULL, ecran, &coo[i]);
 			}
 			point = l;
+
+			if( page > 1 )	{	SDL_BlitSurface(f_g, NULL, ecran, &coo_g);	}
+			if( page < nbpages )	{	SDL_BlitSurface(f_d, NULL, ecran, &coo_d);	}
 
 			SDL_Flip(ecran);
 
@@ -173,7 +183,7 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
 					{
 						case SDL_BUTTON_LEFT:
 							souris.x = event.button.x; souris.y = event.button.y;
-							choisir(ecran, souris, l2);
+							choisir(ecran, souris, l2, page, imgmax);
 							SDL_EnableKeyRepeat(0, 0);
 							break; /*Si l'utilisateur clique, on regarde où*/
 						default:
@@ -190,6 +200,7 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
 		{	actualiser = 0;	}
 	}
 
+	SDL_FreeSurface(f_g); SDL_FreeSurface(f_d);
 	free(tab);
 	free(coo);
 
@@ -202,9 +213,9 @@ int afficher_page(SDL_Surface *ecran, liste *l, liste *l2, int page, int nbpages
  \param SDL_Rect coo coordonnées où l'utilisateur a cliqué
  \param liste *l liste contenant les noms et rangs des images
  */
-void choisir(SDL_Surface *ecran, SDL_Rect coo, liste *l)
+void choisir(SDL_Surface *ecran, SDL_Rect coo, liste *l, int page, int imgmax)
 {
-	int continuer=1, x=1, y=1, n=l->prec->rang;
+	int continuer=1, x=1, y=1, n=l->prec->rang, X=floor((L-ESPACE)/(MI+ESPACE));
 	liste *point = l;
 
 	while(continuer)
@@ -217,10 +228,10 @@ void choisir(SDL_Surface *ecran, SDL_Rect coo, liste *l)
 		{	continuer = 0;	}
 	}
 
-	if( 9*(y-1) + (x-1) <= n && 9*(y-1) + (x-1) >=0 )
+	if( X*(y-1) + x <= page*imgmax && (page-1)*imgmax + X*(y-1) + x <= n )
 	{
 		do
-		{	point = point->suiv;	}while( point->rang != 9*(y-1) + x );
+		{	point = point->suiv;	}while( point->rang != (page-1)*imgmax + X*(y-1) + x );
 		tourner(ecran, point);	/*Si l'utilisateur a cliqué sur une miniature, on lui affiche l'image en grand*/
 	}
 }
